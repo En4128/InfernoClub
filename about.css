@@ -1,0 +1,149 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: "Dosis", sans-serif;
+}
+.about{
+    height: 100vh;
+    width: 100%;
+    background: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+.about .main img{
+    width: 580px;
+    max-width: 100%;
+    height: auto;
+    padding: 0 10px;
+}
+.all-text{
+    width: 600px;
+    max-width: 100%;
+    padding: 0 px;
+}
+.main{
+    width: 1290px;
+    max-width: 95%;
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-around;
+}
+.all-text h4{
+    font-family: "Roboto", sans-serif;
+    font-size: 20px;
+    color: white;
+    letter-spacing: 1px;
+    font-weight: 400;
+    margin-bottom: 10px;
+}
+.all-text h1{
+    font-size: 45px;
+    color:white;
+    font-weight: 700;
+    margin-bottom: 20px;
+
+
+}
+
+.all-text p{
+    font-family: "Roboto", sans-serif;
+    font-size: 20px;
+    color:rgb(16, 16, 16);
+    line-height: 30px;
+    margin-bottom: 35px;
+
+}
+.btn {
+    margin: 100px;
+    padding: 5px 55px;
+    border: none;
+    outline: none;
+    color: none;
+    cursor: pointer;
+    position: relative;
+    z-index: 0;
+    border-radius: 1px;
+  }
+  .btn::after {
+    content: "";
+    z-index: -1;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: #0a0a0a;
+    left: 0;
+    top: 0;
+    border-radius: 10px;
+  }
+  /* glow */
+  .btn::before {
+    content: "";
+    background: linear-gradient(
+      45deg,
+      #FF0000, #FF7300, #FFFB00, #48FF00,
+      #00FFD5, #002BFF, #FF00C8, #FF0000
+    );
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    background-size: 600%;
+    z-index: -1;
+    width: calc(100% + 4px);
+    height:  calc(100% + 4px);
+    filter: blur(8px);
+    animation: glowing 20s linear infinite;
+    transition: opacity .3s ease-in-out;
+    border-radius: 10px;
+    opacity: 0;
+  }
+  
+  @keyframes glowing {
+    0% {background-position: 0 0;}
+    50% {background-position: 400% 0;}
+    100% {background-position: 0 0;}
+  }
+  
+  /* hover */
+  .btn:hover::before {
+    opacity: 1;
+  }
+  
+  .btn:active:after {
+    background: transparent;
+  }
+  
+  .btn:active {
+
+    font-weight: bold;
+  }
+
+@media screen and (max-width:1250px) {
+    .about{
+        width: 100%;
+        height:auto;
+        padding: 60px 0;
+    }
+    .all-text{
+        text-align: center;
+        margin-top: 40px;
+    }
+    
+}
+@media screen and (max-width:650px){
+    .about.main img{
+        margin-bottom: 35px;
+
+    }
+    .all-text h1{
+        font-size: 45px;
+        margin-bottom: 20px;
+    }
+}
+
+
+

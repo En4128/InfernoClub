@@ -1,0 +1,208 @@
+/* General Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+  }
+
+  body {
+    position: relative;
+    overflow-x: hidden;
+  }
+
+  /* Background Image with Blur */
+  .background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url(https://pbs.twimg.com/media/GdTrV8LbMAAXJq1?format=jpg&name=4096x4096)
+      center/cover no-repeat;
+    filter: blur(5px); /* Adjust blur level */
+    z-index: -1;
+  }
+
+  /* Content stays clear */
+  .content {
+    position: relative;
+    z-index: 1;
+  }
+
+  /* Header Styling */
+  .header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 20px 80px;
+    background: transparent;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 1000;
+  }
+
+  .logo {
+    font-size: 24px;
+    font-weight: bold;
+    color: white;
+  }
+
+  .navbar {
+    display: flex;
+    gap: 25px;
+  }
+
+  .navbar a {
+    text-decoration: none;
+    color: whitesmoke;
+    font-size: 16px;
+    font-weight: 500;
+    transition: 0.3s;
+  }
+
+  .navbar a:hover {
+    color: #6a35ff;
+  }
+
+  .btn {
+    background: #6a35ff;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: bold;
+    transition: 0.3s;
+  }
+
+  .btn:hover {
+    background: #5a2ae0;
+  }
+
+  /* Gallery Section */
+  .container {
+    position: relative;
+    top: 120px;
+    width: 90%;
+    max-width: 1100px;
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 15px;
+  }
+
+  .item {
+    width: 300px;
+    height: 200px;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease;
+    cursor: pointer;
+  }
+
+  .item:hover {
+    transform: scale(1.05);
+  }
+
+  .item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  /* Fullscreen Viewer */
+  .fullscreen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.9);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.5s ease-in-out, visibility 0.5s;
+  }
+
+  .fullscreen img {
+    max-width: 90%;
+    max-height: 90%;
+    border-radius: 10px;
+    transform: scale(0.8);
+    transition: transform 0.5s ease-in-out;
+  }
+
+  .fullscreen.show {
+    opacity: 1;
+    visibility: visible;
+  }
+
+  .fullscreen.show img {
+    transform: scale(1);
+  }
+
+  .close-btn {
+    position: absolute;
+    top: 20px;
+    right: 30px;
+    font-size: 30px;
+    color: white;
+    cursor: pointer;
+    transition: 0.3s;
+  }
+
+  .close-btn:hover {
+    color: #ffcc00;
+  }
+
+  /* Back Button
+  .back-btn {
+position: fixed;
+bottom: 20px;
+left: 50%;
+transform: translateX(-50%);
+background: #6a35ff;
+color: white;
+padding: 12px 25px;
+border-radius: 5px;
+text-decoration: none;
+font-size: 16px;
+font-weight: bold;
+transition: 0.3s;
+}
+
+.back-btn:hover {
+background: #5a2ae0;
+} */
+
+.back-btn {
+position: fixed;
+bottom: 30px;
+left: 50%;
+transform: translateX(-50%);
+padding: 12px 25px;
+font-size: 18px;
+font-weight: bold;
+background: linear-gradient(135deg, #ff4757, #e84118);
+color: white;
+border: none;
+border-radius: 25px;
+cursor: pointer;
+transition: all 0.3s ease-in-out;
+box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+text-decoration: none;
+}
+
+/* Hover Effect */
+.back-btn:hover {
+background: linear-gradient(135deg, #e84118, #ff6b81);
+transform: translateX(-50%) scale(1.1);
+box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.3);
+}

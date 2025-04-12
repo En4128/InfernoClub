@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Inferno Club</title>
+    <link
+      rel="php.css"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+
+    <link rel="stylesheet" href="php.css" />
+  </head>
+
+  <body>
+    <div class="background"></div>
+    <div class="content">
+    </div>
+
+    <header class="header">
+      <div class="logo">Inferno Club</div>
+      <nav class="navbar">
+        <a href="index.html">Home</a>
+        <a href="php.html">Gallery</a>
+        <a href="Club Associates.html">Team</a>
+        <a href="Events calender.html">Events</a>
+      </nav>
+    </header>
+
+    <div class="container">
+      <div class="item">
+        <img
+          src="https://d23qowwaqkh3fj.cloudfront.net/wp-content/uploads/2022/09/DSC_1176-scaled.jpg"
+          alt="Gallery Image 1"
+        />
+      </div>
+      <div class="item">
+        <img
+          src="https://www.collegechalo.com/news-panel/wp-content/uploads/2020/08/SRM3-2-scaled.jpg"
+          alt="Gallery Image 2"
+        />
+      </div>
+      <div class="item">
+        <img
+          src="https://srmist.netlify.app/images/cam2.jpg"
+          alt="Gallery Image 3"
+        />
+      </div>
+      <div class="item"><img src="image/g1.jpg" alt="Gallery Image 4" /></div>
+      <div class="item"><img src="image/g2.jpg" alt="Gallery Image 5" /></div>
+      <div class="item"><img src="image/g3.jpg" alt="Gallery Image 6" /></div>
+      <div class="item"><img src="image/g4.jpg" alt="Gallery Image 7" /></div>
+      <div class="item"><img src="image/g5.jpg" alt="Gallery Image 8" /></div>
+      <div class="item"><img src="image/g6.jpg" alt="Gallery Image 9" /></div>
+    </div>
+
+    <!-- Fullscreen Image Viewer -->
+    <div class="fullscreen" id="fullscreen">
+      <span class="close-btn" onclick="closeFullscreen()">&times;</span>
+      <img id="fullscreen-img" src="" alt="Fullscreen Image" />
+    </div>
+
+    <!-- Back Button -->
+    <a href="php.html" class="back-btn">Back</a>
+
+    <!--Javascript -->
+
+    <script>
+      // Get all images
+      const images = document.querySelectorAll(".item img");
+      const fullscreen = document.getElementById("fullscreen");
+      const fullscreenImg = document.getElementById("fullscreen-img");
+
+      images.forEach((img) => {
+        img.addEventListener("click", () => {
+          fullscreenImg.src = img.src;
+          fullscreen.classList.add("show");
+        });
+      });
+
+      function closeFullscreen() {
+        fullscreen.classList.remove("show");
+      }
+
+      // Close when clicking outside the image
+      fullscreen.addEventListener("click", (e) => {
+        if (e.target !== fullscreenImg) {
+          closeFullscreen();
+        }
+      });
+    </script>
+  </body>
+</html>

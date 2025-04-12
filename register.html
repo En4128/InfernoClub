@@ -1,0 +1,203 @@
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css"
+    />
+  </head>
+  <body>
+    <section class="hero is-primary is-bold">
+      <div class="hero-body">
+        <div class="container">
+     <center> <h1 class="title"> Event Register Form </h1></center>     
+        </div>
+      </div>
+    </section>
+    <form id="form" class="container m-4 pl-4" method="POST">
+
+
+        <div class="field">
+                                <label class="label">NAME</label>
+                                <div class="control">
+                                  <input
+                                    class="input"
+                                    type="NAME"
+                                    placeholder="Your NAME"
+                                    name="NAME"
+                                  />
+                                </div>
+                              </div>
+  
+
+       <div class="field">
+        <label class="label"> Mobile Number </label>
+        <div class="control">
+          <input
+            class="input"
+            type="text"
+            placeholder=" Your Mobile Number"
+            name="Mobile Number"
+          />
+        </div>
+      </div> 
+
+      <div class="field">
+        <label class="label">Email</label>
+        <div class="control">
+          <input
+            class="input"
+            type="email"
+            placeholder="Your Email"
+            name="Email"
+          />
+        </div>
+      </div>
+                               <!--      -->
+                             
+
+      <div class="field">
+        <label class="label">Register Number</label>
+        <div class="control">
+          <input
+            class="input"
+            type="number"
+            placeholder=" Your Register Number"
+            name="Register Number"
+          />
+        </div>
+      </div>
+
+      <div class="field">
+        <label class="label">Department</label>
+        <div class="control">
+          <input
+            class="input"
+            type="name"
+            placeholder=" Your Department "
+            name="Department"
+            
+          />
+        </div>
+      </div>
+      
+      <div class="field">
+        <label class="label"> Event Name </label>
+        <div class="control">
+          <input
+          placeholder=" Your Event Name "
+            class="input"
+            type="name"
+            name="Event Name"
+            
+           
+          />
+        </div>
+      </div>
+
+      <div class="field">
+        <label class="label">Gender</label>
+        <div class="control">
+          <label class="radio">
+            <input type="radio" name="Gender" value="male" /> Male
+          </label>
+          <label class="radio">
+            <input type="radio" name="Gender" value="female" /> Female
+          </label>
+        </div>
+      </div>
+
+     
+        </div>
+      </div>
+
+     
+        </div>
+      </div>
+
+      <div class="field is-grouped">
+        <div class="control">
+          <button class="button is-primary" type="submit" id="submit-button">
+            Submit
+          </button>
+        </div>
+        
+      </div>
+    </form>
+    <div
+      id="message"
+      style="
+        display: none;
+        margin: 20px;
+        font-weight: bold;
+        color: green;
+        padding: 8px;
+        background-color: beige;
+        border-radius: 4px;
+        border-color: aquamarine;
+      "
+    ></div>
+
+    <script>
+      document.getElementById("form").addEventListener("submit", function (e) {
+        e.preventDefault(); // Prevent the default form submission
+        document.getElementById("message").textContent = "Submitting..";
+        document.getElementById("message").style.display = "block";
+        document.getElementById("submit-button").disabled = true;
+
+        // Collect the form data
+        var formData = new FormData(this);
+        var keyValuePairs = [];
+        for (var pair of formData.entries()) {
+          keyValuePairs.push(pair[0] + "=" + pair[1]);
+        }
+
+        var formDataString = keyValuePairs.join("&");
+
+        // Send a POST request to your Google Apps Script
+        fetch(
+          "https://script.google.com/macros/s/AKfycbz7kgOQeUwcg54GHDVJVjyTsk4VpCGVUptic6eb7NXJ6xZ-RVf465RrWGjACbB_-5vc/exec",
+          {
+            redirect: "follow",
+            method: "POST",
+            body: formDataString,
+            headers: {
+              "Content-Type": "text/plain;charset=utf-8",
+            },
+          }
+        )
+          .then(function (response) {
+            // Check if the request was successful
+            if (response) {
+              return response; // Assuming your script returns JSON response
+            } else {
+              throw new Error("Failed to submit the form.");
+            }
+          })
+          .then(function (data) {
+            // Display a success message
+            document.getElementById("message").textContent =
+              "Data submitted successfully!";
+            document.getElementById("message").style.display = "block";
+            document.getElementById("message").style.backgroundColor = "green";
+            document.getElementById("message").style.color = "beige";
+            document.getElementById("submit-button").disabled = false;
+            document.getElementById("form").reset();
+
+            setTimeout(function () {
+              document.getElementById("message").textContent = "";
+              document.getElementById("message").style.display = "none";
+            }, 2600);
+          })
+          .catch(function (error) {
+            // Handle errors, you can display an error message here
+            console.error(error);
+            document.getElementById("message").textContent =
+              "An error occurred while submitting the form.";
+            document.getElementById("message").style.display = "block";
+          });
+      });
+    </script>
+  </body>
+</html>

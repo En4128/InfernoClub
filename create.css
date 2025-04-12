@@ -1,0 +1,211 @@
+/* Base Styles */
+body {
+  font-family: 'Poppins', sans-serif;
+  background-color: #928dAB;
+  color: #333;
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+}
+
+h1 {
+  text-align: center;
+  margin: 2rem 0;
+  font-weight: 700;
+  color: #1a1a1a;
+  font-size: 2.5rem;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  position: relative;
+}
+
+h1::after {
+  content: '';
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80px;
+  height: 4px;
+  background: #FF4D00;
+  border-radius: 2px;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+/* Gallery Grid */
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 2rem;
+  perspective: 1000px;
+}
+
+/* Image Box with Unique Transitions */
+.img-box {
+  position: relative;
+  height: 350px;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  transition: all 0.5s cubic-bezier(0.25, 0.8, 0.25, 1);
+  background: #fff;
+  transform-style: preserve-3d;
+}
+
+.img-box::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  /* background: linear-gradient(135deg, rgba(255,77,0,0.8) 0%, rgba(255,149,0,0.8) 100%); */
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  z-index: 1;
+}
+
+.img-box h3 {
+  position: absolute;
+  bottom: -50px;
+  left: 0;
+  width: 100%;
+  padding: 1.5rem;
+  color: white;
+  background: rgba(0, 0, 0, 0.7);
+  margin: 0;
+  font-weight: 600;
+  transform: translateY(100%);
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  z-index: 2;
+  text-align: center;
+  font-size: 1.3rem;
+}
+
+/* Different Background Patterns for Each Box */
+.img-box:nth-child(1) {
+  background: url('image/amal.jpg') center/cover;
+}
+
+.img-box:nth-child(2) {
+  background: url('image/1711104292860.jpg') center/cover;
+}
+
+.img-box:nth-child(3) {
+  background: url('gallery/Team\ 1.png') center/cover;
+}
+
+.img-box:nth-child(4) {
+  background: url('gallery/vice\ president.jpg') center/cover;
+}
+
+.img-box:nth-child(5) {
+  background: url('gallery/president.jpg') center/cover;
+}
+
+.img-box:nth-child(6) {
+  background: url('gallery/Team\ 2.JPG') center/cover;
+}
+
+/* Hover Effects */
+.img-box:hover {
+  transform: translateY(-10px) rotateX(5deg);
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+}
+
+.img-box:hover::before {
+  opacity: 0.7;
+}
+
+.img-box:hover h3 {
+  transform: translateY(0);
+  bottom: 0;
+}
+
+/* Individual Animation Delays */
+.img-box:nth-child(1) { transition-delay: 0.1s; }
+.img-box:nth-child(2) { transition-delay: 0.2s; }
+.img-box:nth-child(3) { transition-delay: 0.3s; }
+.img-box:nth-child(4) { transition-delay: 0.4s; }
+.img-box:nth-child(5) { transition-delay: 0.5s; }
+.img-box:nth-child(6) { transition-delay: 0.6s; }
+
+/* View Transition Animation */
+@media (prefers-reduced-motion: no-preference) {
+  .img-box {
+    view-transition-name: team-member;
+  }
+  
+  @keyframes fade-in {
+    from { opacity: 0; transform: scale(0.9); }
+    to { opacity: 1; transform: scale(1); }
+  }
+  
+  @keyframes fade-out {
+    from { opacity: 1; transform: scale(1); }
+    to { opacity: 0; transform: scale(1.1); }
+  }
+  
+  ::view-transition-old(root) {
+    animation: 300ms fade-out ease;
+  }
+  
+  ::view-transition-new(root) {
+    animation: 300ms fade-in ease;
+  }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .gallery {
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  }
+  
+  h1 {
+    font-size: 2rem;
+  }
+  
+  .img-box {
+    height: 300px;
+  }
+}
+
+@media (max-width: 480px) {
+  .gallery {
+    grid-template-columns: 1fr;
+  }
+  
+  .container {
+    padding: 1rem;
+  }
+}
+
+.back-btn {
+  position: fixed;
+  bottom: 30px;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 12px 25px;
+  font-size: 18px;
+  font-weight: bold;
+  background: linear-gradient(135deg, #ff4757, #e84118);
+  color: white;
+  border: none;
+  border-radius: 25px;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+  box-shadow: 0px 4px 10px rgba(248, 0, 0, 0.2);
+  text-decoration: none;
+  }
+  
+  /* Hover Effect */
+  .back-btn:hover {
+  background: linear-gradient(135deg, #e84118, #ff6b81);
+  transform: translateX(-50%) scale(1.1);
+  box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.3);
+  }
